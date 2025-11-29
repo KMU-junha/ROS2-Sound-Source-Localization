@@ -45,7 +45,7 @@
 ![Project Poster](image_745d19.png)
 > **[Figure 1]** 프로젝트 포스터 및 시스템 구성도
 
-![Rviz Screenshot](image_740626.png)
+![Rviz Screenshot](spatiotemporor_clustering.png)
 > **[Figure 2]** Rviz 시각화 화면: 추정된 소리 위치에 Marker가 생성되는 모습
 
 * **Accuracy:** 정적 환경 오차 **±5cm 이내**, 동적 환경(로봇 이동 중) 추정 성공률 **80% 달성**.
