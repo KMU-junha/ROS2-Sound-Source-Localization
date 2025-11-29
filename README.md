@@ -52,9 +52,8 @@ graph TD
         Triangulator -->|Clustering| Estimated_Point[Target Marker]
         Estimated_Point --> RViz[RViz Visualization]
     end
----
-
 ```markdown
+
 ## 4. Hardware & Environment
 * **Robot:** TurtleBot3 (Jetson Orin Nano)
 * **Sensor:** ReSpeaker Mic Array v2.0 x 2
