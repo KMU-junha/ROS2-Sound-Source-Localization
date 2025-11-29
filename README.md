@@ -54,8 +54,6 @@ graph TD
     end
 ---
 
-### 4️⃣ 네 번째: 결과 및 데모 (복사하세요)
-
 ```markdown
 ## 4. Hardware & Environment
 * **Robot:** TurtleBot3 (Jetson Orin Nano)
