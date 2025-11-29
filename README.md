@@ -3,7 +3,7 @@
 
 ### 📋 Project Info
 * **Project:** 2025-2 국민대학교 전자공학 설계대회 (UROP II 연구 프로젝트)
-* **Period:** 2025.09 ~ 2025.12
+* **Period:** 2025.09 ~ 2025.11
 * **Role:** **Sound Localization System Lead** (소리 위치 추정 알고리즘 및 ROS2 노드 개발)
 * **Collaboration:** 3D SLAM (Team) + Sound Localization (Me) = **Sensor Fusion Reconnaissance Robot**
 
