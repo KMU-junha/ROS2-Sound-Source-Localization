@@ -33,34 +33,13 @@
     * **Std Filter:** 저장된 좌표들의 **표준편차(Standard Deviation)** 가 임계값 (`CLUSTER_STD_LIMIT`) 이내일 때만 유효한 타겟으로 인정.
     * **Stagnation Detection:** 센서 오류로 인해 값이 굳는(Frozen) 현상을 감지하고 필터링하는 로직 구현.
 
-## 3. System Architecture (시스템 구조)
-
-```mermaid
-graph TD
-    subgraph Robot [TurtleBot3 (Jetson Orin)]
-        Mic1[ReSpeaker Mic] -->|USB| DOA_Node1[doa_publisher.py]
-        DOA_Node1 -->|Topic: /mic_angle| ROS2_Network
-    end
-
-    subgraph Control_Center [Laptop]
-        Mic2[ReSpeaker Mic] -->|USB| DOA_Node2[doa_publisher.py]
-        DOA_Node2 -->|Topic: /mic_angle_2| ROS2_Network
-        
-        ROS2_Network -->|Sync| Triangulator[triangulator_tf.py]
-        TF_Tree[TF / SLAM Odometry] -->|Transform| Triangulator
-        
-        Triangulator -->|Clustering| Estimated_Point[Target Marker]
-        Estimated_Point --> RViz[RViz Visualization]
-    end
-```markdown
-
-## 4. Hardware & Environment
+## 3. Hardware & Environment
 * **Robot:** TurtleBot3 (Jetson Orin Nano)
 * **Sensor:** ReSpeaker Mic Array v2.0 x 2
 * **OS/Middleware:** Ubuntu 22.04 / ROS2 Humble
 * **Language:** Python 3.10
 
-## 5. Result & Demo
+## 4. Result & Demo
 *(아래 이미지는 프로젝트 시연 및 Rviz 시각화 결과입니다)*
 
 ![Project Poster](image_745d19.png)
