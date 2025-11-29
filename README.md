@@ -42,7 +42,7 @@
 ## 4. Result & Demo
 *(아래 이미지는 프로젝트 시연 및 Rviz 시각화 결과입니다)*
 
-![Project Poster](image_745d19.png)
+![Project Poster](2025_2_UROP_II_poster.png)
 > **[Figure 1]** 프로젝트 포스터 및 시스템 구성도
 
 ![Rviz Screenshot](spatiotemporor_clustering.png)
