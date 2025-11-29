@@ -40,20 +40,20 @@
 
 ```mermaid
 graph TD
-    subgraph Robot [TurtleBot3 (Jetson Orin)]
-        Mic1[ReSpeaker Mic] -->|USB| DOA_Node1[doa_publisher.py]
-        DOA_Node1 -->|Topic: /mic_angle| ROS2_Network
+    subgraph Robot ["TurtleBot3 (Jetson Orin)"]
+        Mic1["ReSpeaker Mic"] -->|"USB"| DOA_Node1["doa_publisher.py"]
+        DOA_Node1 -->|"Topic: /mic_angle"| ROS2_Network
     end
 
-    subgraph Control_Center [Laptop]
-        Mic2[ReSpeaker Mic] -->|USB| DOA_Node2[doa_publisher.py]
-        DOA_Node2 -->|Topic: /mic_angle_2| ROS2_Network
+    subgraph Laptop ["Control Center (Laptop)"]
+        Mic2["ReSpeaker Mic"] -->|"USB"| DOA_Node2["doa_publisher.py"]
+        DOA_Node2 -->|"Topic: /mic_angle_2"| ROS2_Network
         
-        ROS2_Network -->|Sync| Triangulator[triangulator_tf.py]
-        TF_Tree[TF / SLAM Odometry] -->|Transform| Triangulator
+        ROS2_Network -->|"Sync"| Triangulator["triangulator_tf.py"]
+        TF_Tree["TF / SLAM Odometry"] -->|"Transform"| Triangulator
         
-        Triangulator -->|Clustering| Estimated_Point[Target Marker]
-        Estimated_Point --> RViz[RViz Visualization]
+        Triangulator -->|"Clustering"| Estimated_Point["Target Marker"]
+        Estimated_Point --> RViz["RViz Visualization"]
     end
 ```
 
