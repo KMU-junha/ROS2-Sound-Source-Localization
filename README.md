@@ -32,6 +32,7 @@
     * **Sliding Window:** 최근 N개의 추정 좌표를 큐(Queue)에 저장.
     * **Std Filter:** 저장된 좌표들의 **표준편차(Standard Deviation)** 가 임계값 (`CLUSTER_STD_LIMIT`) 이내일 때만 유효한 타겟으로 인정.
     * **Stagnation Detection:** 센서 오류로 인해 값이 굳는(Frozen) 현상을 감지하고 필터링하는 로직 구현.
+
 ## 3. System Architecture (시스템 구조)
 
 ```mermaid
