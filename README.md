@@ -48,5 +48,5 @@
 ![Rviz Screenshot](spatiotemporor_clustering.png)
 > **[Figure 2]** Rviz 시각화 화면: 추정된 소리 위치에 Marker가 생성되는 모습
 
-* **Accuracy:** 정적 환경 오차 **±5cm 이내**, 동적 환경(로봇 이동 중) 추정 성공률 **80% 달성**.
+* **Accuracy:** 정적 환경 오차 **±5cm 이내**, 동적 환경(로봇 이동 중) 추정 성공률 **90% 달성**.
 * **Visualization:** Rviz 상에 소리 발생 지점을 `Marker` 로 띄워 직관적인 모니터링 시스템 구축.
