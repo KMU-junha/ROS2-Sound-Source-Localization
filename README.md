@@ -19,7 +19,10 @@
 * **Algorithm:** **GCC-PHAT** 기반의 TDOA(Time Difference of Arrival) 알고리즘을 활용하여 소리의 도래각(DOA) 추출.
 * **Implementation:** `doa_publisher.py` 노드가 USB 인터페이스로 마이크 데이터를 수신하고, 이를 ROS2 Topic (`Float32`, `PoseStamped`) 으로 변환하여 실시간 발행합니다.
 
-### 2-2. Dynamic Triangulation with TF (이동 로봇 삼각측량)
+### 2-2. Dynamic Triangulation with TF (이동 로봇 삼각측량) 
+
+[Image of triangulation geometry]
+
 * **File:** `scripts/triangulator_tf.py`
 * **Challenge:** 로봇이 움직이면 마이크의 위치와 각도가 계속 변하기 때문에, 단순 삼각측량으로는 좌표 계산이 불가능함.
 * **Solution:**
@@ -33,13 +36,34 @@
     * **Std Filter:** 저장된 좌표들의 **표준편차(Standard Deviation)** 가 임계값 (`CLUSTER_STD_LIMIT`) 이내일 때만 유효한 타겟으로 인정.
     * **Stagnation Detection:** 센서 오류로 인해 값이 굳는(Frozen) 현상을 감지하고 필터링하는 로직 구현.
 
-## 3. Hardware & Environment
+## 3. System Architecture (시스템 구조)
+
+```mermaid
+graph TD
+    subgraph Robot [TurtleBot3 (Jetson Orin)]
+        Mic1[ReSpeaker Mic] -->|USB| DOA_Node1[doa_publisher.py]
+        DOA_Node1 -->|Topic: /mic_angle| ROS2_Network
+    end
+
+    subgraph Control_Center [Laptop]
+        Mic2[ReSpeaker Mic] -->|USB| DOA_Node2[doa_publisher.py]
+        DOA_Node2 -->|Topic: /mic_angle_2| ROS2_Network
+        
+        ROS2_Network -->|Sync| Triangulator[triangulator_tf.py]
+        TF_Tree[TF / SLAM Odometry] -->|Transform| Triangulator
+        
+        Triangulator -->|Clustering| Estimated_Point[Target Marker]
+        Estimated_Point --> RViz[RViz Visualization]
+    end
+```
+
+## 4. Hardware & Environment
 * **Robot:** TurtleBot3 (Jetson Orin Nano)
 * **Sensor:** ReSpeaker Mic Array v2.0 x 2
 * **OS/Middleware:** Ubuntu 22.04 / ROS2 Humble
 * **Language:** Python 3.10
 
-## 4. Result & Demo
+## 5. Result & Demo
 *(아래 이미지는 프로젝트 시연 및 Rviz 시각화 결과입니다)*
 
 ![Project Poster](2025_2_UROP_II_poster.png)
